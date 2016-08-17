@@ -68,6 +68,13 @@
           
         MP.api.jql(script, params).done(function(results) {
           eventTable.MPTable('setData', results);
+          var data = [];
+          for(i=0; i<results.length; i++) {
+            data[i] = {};
+            data[i]['Event'] = results[i]['name'];
+            data[i]['Distinct ID'] = results[i]['distinct_id'];
+            data[i]['Time'] = results[i]['time'];
+          }
           console.log(results);
         });
       };
