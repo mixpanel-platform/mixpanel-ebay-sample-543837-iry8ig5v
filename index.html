@@ -67,7 +67,6 @@
         };
           
         MP.api.jql(script, params).done(function(results) {
-          eventTable.MPTable('setData', results);
           var data = [];
           for(i=0; i<results.length; i++) {
             data[i] = {};
@@ -76,10 +75,11 @@
             data[i]['Time'] = results[i]['time'];
             var keys = Object.keys(results[i]['properties']);
             for(j=0; j<keys.length; j++) {
-              data[i][keys[j]] = results[i][keys[j]];
+              data[i][keys[j]] = results[i]['properties'][keys[j]];
             }
           }
           console.log(data);
+          eventTable.MPTable('setData', data);
         });
       };
 
