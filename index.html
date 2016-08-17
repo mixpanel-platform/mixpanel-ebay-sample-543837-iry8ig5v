@@ -74,8 +74,12 @@
             data[i]['Event'] = results[i]['name'];
             data[i]['Distinct ID'] = results[i]['distinct_id'];
             data[i]['Time'] = results[i]['time'];
+            var keys = Object.keys(results[i]['properties']);
+            for(j=0; j<keys.length; j++) {
+              data[i][keys[j]] = results[i][keys[j]];
+            }
           }
-          console.log(results);
+          console.log(data);
         });
       };
 
